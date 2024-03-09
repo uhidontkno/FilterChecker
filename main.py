@@ -20,10 +20,10 @@ async def check(ctx, url):
     if fqdn:
         embed = {
             'title': f"Results for {fqdn}",
-            'description': f"FortiGuard: {await fortiguard(fqdn)}\nLightspeed: {await lightspeed(fqdn)}\nPalto Alto: {await pan(fqdn)}\nGoogle Safe Browsing: {'Dangerous' if await safe_browsing(fqdn) else 'Not Dangerous'}"
+            'description': f"FortiGuard: {await fortiguard(fqdn)}\nLightspeed: {await lightspeed(fqdn)}\nPalo Alto: {await pan(fqdn)}\nGoogle Safe Browsing: {'Dangerous' if await safe_browsing(fqdn) else 'Not Dangerous'}"
         }
-        await ctx.respond(embed=embed)
+        await ctx.respond(embed=embed, ephemeral=True)
     else:
-        await ctx.respond("Invalid URL provided.")
+        await ctx.respond("Invalid URL provided.",ephemeral=True)
 
 bot.run(os.environ['BOT_TOKEN'])
